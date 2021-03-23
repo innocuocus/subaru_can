@@ -22,7 +22,7 @@ void setup() {
 void loop() {
   for (byte i=1; i<=255; i++){
   
-  sp2 = sp2+1; 
+  sp2 =  
   canMsg1.can_id  = 0x511;
   canMsg1.can_dlc = 8;
   canMsg1.data[0] = 0x00;
@@ -45,21 +45,21 @@ void loop() {
 
   canMsg3.can_id  = 0x513;
   canMsg3.can_dlc = 8;
-  canMsg3.data[0] = 0x01;
-  canMsg3.data[1] = sp2,HEX;
-  canMsg3.data[2] = 0x01;
-  canMsg3.data[3] = sp2,HEX;
-  canMsg3.data[4] = 0x01;
-  canMsg3.data[5] = sp2,HEX;
-  canMsg3.data[6] = 0x01;
-  canMsg3.data[7] = sp2,HEX;
+  canMsg3.data[0] = 0x02;
+  canMsg3.data[1] = 0xC7;
+  canMsg3.data[2] = 0x02;
+  canMsg3.data[3] = 0xC7;
+  canMsg3.data[4] = 0x02;
+  canMsg3.data[5] = 0xC7;
+  canMsg3.data[6] = 0x02;
+  canMsg3.data[7] = 0xC7;
 
   canMsg4.can_id  = 0x512;
   canMsg4.can_dlc = 8;
   canMsg4.data[0] = 0x00;
   canMsg4.data[1] = 0xE0;
-  canMsg4.data[2] = 0x01;
-  canMsg4.data[3] = sp2,HEX;
+  canMsg4.data[2] = 0x02;
+  canMsg4.data[3] = 0xC7;
   canMsg4.data[4] = 0x10;
   canMsg4.data[5] = i,HEX;
   canMsg4.data[6] = 0x40;

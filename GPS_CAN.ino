@@ -30,8 +30,9 @@ void setup(void) {
  
 
 void loop() {
-
-  while (SoftSerial.available() > 0) {
+  
+ for (byte i=1; i<=255; i++){
+   while (SoftSerial.available() > 0) {
  
     if (gps.encode(SoftSerial.read())) {
       
@@ -40,16 +41,14 @@ void loop() {
         sp_gps=gps.speed.kmph();
         Serial.print(sp_gps);
         Serial.println(" kmph");
-        sp_gps=sp_gps\0.05625;
+        sp_gps=sp_gps/0.05625;
       }
       else
         Serial.println("Speed Invalid");
        sp_gps=0; 
     }
+   }
 
-
-
-  for (byte i=1; i<=255; i++){
   word x=sp_gps;
   sp1=x/256;
   sp2=x%256; 
@@ -101,34 +100,6 @@ void loop() {
   mcp2515.sendMessage(&canMsg4);
   
   delay(20);
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-  while (SoftSerial.available() > 0) {
- 
-    if (gps.encode(SoftSerial.read())) {
-      
-      if (gps.speed.isValid()) {
-        Serial.print("Speed      = ");
-        Serial.print(gps.speed.kmph());
-        Serial.println(" kmph");
-      }
-      else
-        Serial.println("Speed Invalid");
- 
-    }
- 
-  }
- 
-delay(100);}
+   }
+}
+  

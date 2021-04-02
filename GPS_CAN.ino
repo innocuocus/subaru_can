@@ -43,15 +43,15 @@ void loop() {
         Serial.println(" kmph");
         sp_gps=sp_gps/0.05625;
       }
-      else
-        Serial.println("Speed Invalid");
-       sp_gps=0; 
+      else  sp_gps=0; 
     }
    }
 
   word x=sp_gps;
+  Serial.println(x);
   sp1=x/256;
   sp2=x%256; 
+
   canMsg1.can_id  = 0x511;
   canMsg1.can_dlc = 8;
   canMsg1.data[0] = 0x00;
@@ -74,21 +74,21 @@ void loop() {
 
   canMsg3.can_id  = 0x513;
   canMsg3.can_dlc = 8;
-  canMsg3.data[0] = sp1,HEX;
-  canMsg3.data[1] = sp2,HEX;
-  canMsg3.data[2] = sp1,HEX;
-  canMsg3.data[3] = sp2,HEX;
-  canMsg3.data[4] = sp1,HEX;
-  canMsg3.data[5] = sp2,HEX;
-  canMsg3.data[6] = sp1,HEX;
-  canMsg3.data[7] = sp2,HEX;
+  canMsg3.data[0] = sp2,HEX;
+  canMsg3.data[1] = sp1,HEX;
+  canMsg3.data[2] = sp2,HEX;
+  canMsg3.data[3] = sp1,HEX;
+  canMsg3.data[4] = sp2,HEX;
+  canMsg3.data[5] = sp1,HEX;
+  canMsg3.data[6] = sp2,HEX;
+  canMsg3.data[7] = sp1,HEX;
 
   canMsg4.can_id  = 0x512;
   canMsg4.can_dlc = 8;
   canMsg4.data[0] = 0x00;
   canMsg4.data[1] = 0xE0;
-  canMsg4.data[2] = sp1,HEX;
-  canMsg4.data[3] = sp2,HEX;
+  canMsg4.data[2] = sp2,HEX;
+  canMsg4.data[3] = sp1,HEX;
   canMsg4.data[4] = 0x10;
   canMsg4.data[5] = i,HEX;
   canMsg4.data[6] = 0x40;
@@ -102,4 +102,3 @@ void loop() {
   delay(20);
    }
 }
-  
